@@ -1,6 +1,6 @@
 ;_____________________________________________________________________________________________
 ;region ;;INIT
-
+AUTO HOT KEY VERSION 1.X ONLY, one day for version 2
 #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
@@ -13,6 +13,7 @@ if not (RegExMatch(DllCall("GetCommandLine", "str"), " /restart(?!\S)")) {
   ExitApp
 }
 
+;Map MmoMouse Buttons to a key
 ;Key list
 ;1 XButton1
 ;2 PgUp
@@ -34,6 +35,7 @@ if not (RegExMatch(DllCall("GetCommandLine", "str"), " /restart(?!\S)")) {
 ;ADOBE
 GroupAdd, Adobe, ahk_exe Photoshop.exe
 
+;Don't cheat in your games, and gitgud
 ;GROUPE NOT ACTIVE
 ;GroupAdd, MmoNotActive, ahk_exe VRChat.exe
 GroupAdd, MmoNotActive, ahk_exe NewWorld.exe
@@ -44,12 +46,13 @@ GroupAdd, MmoNotActive, ahk_exe Spellbreak.exe
 GroupAdd, MmoNotActive, ahk_exe ffxiv_dx11.exe
 GroupAdd, MmoNotActive, ahk_exe GenshinImpact.exe
 GroupAdd, MmoNotActive, ahk_exe BlackDesert64.exe
-GroupAdd, MmoNotActive, ahk_exe PureRef.exe
 GroupAdd, MmoNotActive, ahk_exe LOSTARK.exe
 
-;GROUPE SUSPEND
-GroupAdd, MmoSuspend, ahk_exe League of Legends.exe
+;some apps just don't accept inactive state, close ahk
+;GROUPE Exit
+GroupAdd, MmoExit, ahk_exe League of Legends.exe
 
+;on-screen OCR kanji reader for japanese games
 ;KANJITOMO
 GroupAdd, Kanjitomogame, ahk_class SunAwtFrame
 GroupAdd, Kanjitomogame, ahk_exe MonsterHunterRise.exe
@@ -62,14 +65,14 @@ GroupAdd, Code, scrimba.com
 GroupAdd, VsCode, ahk_exe Code.exe
 GroupAdd, VsCode, Babylon.js Playground
 
-#IfWinActive, ahk_group MmoSuspend
-  ;rbutton:: Suspend, On
+#IfWinActive, ahk_group Exit
   rbutton:: ExitApp
   return
 ;endregion
 ;_____________________________________________________________________________________________
 ;_____________________________________________________________________________________________
 ;region ;;DISABLE
+; Almost the same as default but broadly accepted keys in games.
 #IfWinActive, ahk_group MmoNotActive
   ;_____________________________________________________________________________________
   ; key should have a while state to be for holding KeyDown
